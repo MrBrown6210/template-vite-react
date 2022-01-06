@@ -4,11 +4,10 @@ import logo from "../assets/logo.svg";
 import { Form, Input, Button, Checkbox, Row, Col } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "../helper/axios";
-import { login, signup } from "../api/auth";
+import api from "../api";
 import { AxiosError } from "axios";
 
 const SignupPage = () => {
-  const [count, setCount] = useState(0);
   const navigate = useNavigate();
 
   return (
@@ -29,7 +28,7 @@ const SignupPage = () => {
           <Form
             onFinish={async (e) => {
               try {
-                await signup(e);
+                await api.auth.login(e);
                 navigate("/", { replace: true });
               } catch (error) {
                 if (axios.isAxiosError(error)) {

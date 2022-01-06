@@ -8,7 +8,6 @@ import { login } from "../api/auth";
 import { AxiosError } from "axios";
 
 function LoginPage() {
-  const [count, setCount] = useState(0);
   const navigate = useNavigate();
 
   return (
