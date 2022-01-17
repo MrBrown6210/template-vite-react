@@ -2,6 +2,7 @@
 
 interface ImportMetaEnv {
   readonly VITE_API_URL: string;
+  readonly VITE_MOCK_ENABLE: boolean;
   // more env variables...
 }
 

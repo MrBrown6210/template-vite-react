@@ -13,12 +13,12 @@ interface SignupDtp {
   need_contact_to_review?: boolean;
 }
 
-interface LoginDto {
+export interface LoginDto {
   email: string;
   password: string;
 }
 
-interface TokenDto {
+export interface TokenDto {
   accessToken: string;
 }
 
