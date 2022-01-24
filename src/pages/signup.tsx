@@ -6,9 +6,21 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "../helper/axios";
 import api from "../api";
 import { AxiosError } from "axios";
+import { SignupForm } from "../components/SignupForm";
 
 const SignupPage = () => {
   const navigate = useNavigate();
+
+  const onFinish = async (e: any) => {
+    try {
+      await api.auth.signup(e);
+      navigate("/", { replace: true });
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        alert(error.message);
+      }
+    }
+  };
 
   return (
     <div className="content px-16 pt-5">
@@ -25,17 +37,10 @@ const SignupPage = () => {
       <div className="h-[2px] bg-gray-50"></div>
       <div className="flex justify-center">
         <div className="pt-5 w-3/6">
-          <Form
-            onFinish={async (e) => {
-              try {
-                await api.auth.login(e);
-                navigate("/", { replace: true });
-              } catch (error) {
-                if (axios.isAxiosError(error)) {
-                  alert(error.message);
-                }
-              }
-            }}
+          <SignupForm onFinish={onFinish}></SignupForm>
+          {/* <Form
+            data-testid="form"
+            onFinish={onFinish}
             onFinishFailed={() => {
               console.log("sss");
             }}
@@ -46,7 +51,11 @@ const SignupPage = () => {
               name="email"
               rules={[{ required: true, message: "Please input your email!" }]}
             >
-              <Input placeholder="Email" className=" w-full" />
+              <Input
+                placeholder="Email"
+                data-testid="email"
+                className=" w-full"
+              />
             </Form.Item>
 
             <Row gutter={24}>
@@ -57,7 +66,11 @@ const SignupPage = () => {
                     { required: true, message: "Please input your password!" },
                   ]}
                 >
-                  <Input.Password placeholder="Password" className=" w-full" />
+                  <Input.Password
+                    placeholder="Password"
+                    data-testid="password"
+                    className=" w-full"
+                  />
                 </Form.Item>
               </Col>
               <Col span={12}>
@@ -82,7 +95,10 @@ const SignupPage = () => {
                     }),
                   ]}
                 >
-                  <Input.Password placeholder="Confirm Password" />
+                  <Input.Password
+                    data-testid="confirm-password"
+                    placeholder="Confirm Password"
+                  />
                 </Form.Item>
               </Col>
             </Row>
@@ -102,7 +118,11 @@ const SignupPage = () => {
                     { required: true, message: "Please input your name!" },
                   ]}
                 >
-                  <Input placeholder="Name" className=" w-full" />
+                  <Input
+                    placeholder="Name"
+                    data-testid="name"
+                    className=" w-full"
+                  />
                 </Form.Item>
               </Col>
               <Col span={12}>
@@ -117,7 +137,7 @@ const SignupPage = () => {
                     },
                   ]}
                 >
-                  <Input placeholder="Last name" />
+                  <Input data-testid="last-name" placeholder="Last name" />
                 </Form.Item>
               </Col>
             </Row>
@@ -133,7 +153,7 @@ const SignupPage = () => {
                 },
               ]}
             >
-              <Input placeholder="Organization" />
+              <Input data-testid="organization" placeholder="Organization" />
             </Form.Item>
 
             <Row gutter={24}>
@@ -146,7 +166,11 @@ const SignupPage = () => {
                     { required: true, message: "Please input your country!" },
                   ]}
                 >
-                  <Input placeholder="Country" className=" w-full" />
+                  <Input
+                    data-testid="country"
+                    placeholder="Country"
+                    className=" w-full"
+                  />
                 </Form.Item>
               </Col>
               <Col span={12}>
@@ -161,26 +185,26 @@ const SignupPage = () => {
                     },
                   ]}
                 >
-                  <Input placeholder="Phone" />
+                  <Input data-testid="phone" placeholder="Phone" />
                 </Form.Item>
               </Col>
             </Row>
 
             <Form.Item name="is_agree_collect_data" valuePropName="checked">
-              <Checkbox>
+              <Checkbox data-testid="is_agree_collect_data">
                 I agree to have my data collected and stored accroding to the
                 privacy statement
               </Checkbox>
             </Form.Item>
 
             <Form.Item name="need_notify_review_update" valuePropName="checked">
-              <Checkbox>
+              <Checkbox data-testid="need_notify_review_update">
                 I would like to be notified of submission review updates.
               </Checkbox>
             </Form.Item>
 
             <Form.Item name="need_contact_to_review" valuePropName="checked">
-              <Checkbox>
+              <Checkbox data-testid="need_contact_to_review">
                 I would like to be contacted with requests to review submissions
                 to this journal.
               </Checkbox>
@@ -188,6 +212,7 @@ const SignupPage = () => {
 
             <Form.Item wrapperCol={{ offset: 5, span: 16 }}>
               <Button
+                data-testid="submit-button"
                 type="primary"
                 htmlType="submit"
                 className="w-48 bg-orange border-0"
@@ -195,7 +220,7 @@ const SignupPage = () => {
                 Register
               </Button>
             </Form.Item>
-          </Form>
+          </Form> */}
         </div>
       </div>
     </div>

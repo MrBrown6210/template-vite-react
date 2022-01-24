@@ -19,6 +19,7 @@ function LoginPage() {
         </h1>
         <h2 className=" text-xl text-white">Thai Health Promotion Journal</h2>
         <Form
+          data-testid="form"
           onFinish={async (e) => {
             try {
               const token = await login(e);
@@ -39,14 +40,14 @@ function LoginPage() {
             name="email"
             rules={[{ required: true, message: "Please input your email!" }]}
           >
-            <Input placeholder="Email" className=" w-80" />
+            <Input placeholder="Email" className=" w-80" data-testid="email" />
           </Form.Item>
 
           <Form.Item
             name="password"
             rules={[{ required: true, message: "Please input your password!" }]}
           >
-            <Input.Password placeholder="Password" />
+            <Input.Password placeholder="Password" data-testid="password" />
           </Form.Item>
 
           <Form.Item wrapperCol={{ offset: 5, span: 16 }}>
@@ -61,7 +62,9 @@ function LoginPage() {
         </Form>
         <p className=" text-white">
           In case you do not have an account, please{" "}
-          <Link to={"/signup"}>Create an Account</Link>
+          <Link data-testid="signup" to={"/signup"}>
+            Create an Account
+          </Link>
         </p>
       </div>
     </div>

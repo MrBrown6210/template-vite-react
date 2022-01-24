@@ -1,6 +1,6 @@
 import axios from "../helper/axios";
 
-interface SignupDtp {
+export interface SignupDto {
   email: string;
   password: string;
   firstName: string;
@@ -22,7 +22,7 @@ export interface TokenDto {
   accessToken: string;
 }
 
-export const signup = async (signupDto: SignupDtp) => {
+export const signup = async (signupDto: SignupDto) => {
   const { email, password } = signupDto;
   await axios.post("auth/signup", signupDto);
   await login({
