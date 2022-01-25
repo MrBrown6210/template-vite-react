@@ -1,15 +1,37 @@
 import { Button, Checkbox, Col, Form, Input, Row } from "antd";
-import { useEffect } from "react";
+import { useForm } from "antd/lib/form/Form";
 
-interface IProp {
-  onFinish?: (values: any) => void;
-  onFinishFailed?: (values: any) => void;
+export interface ISignupFormValues {
+  email: string;
+  password: string;
+  comfirmPassword: string;
+  firstName: string;
+  lastName: string;
+  organization?: string;
+  country: string;
+  phone: string;
+  is_agree_collect_data: boolean;
+  need_notify_review_update: boolean;
+  need_contact_to_review: boolean;
 }
 
+interface IProp {
+  onFinish?: (values: ISignupFormValues) => void;
+  onFinishFailed?: (error: any) => void;
+}
+
+const getDefaultFormValues = () => ({
+  is_agree_collect_data: false,
+  need_notify_review_update: false,
+  need_contact_to_review: false,
+});
+
 export const SignupForm: React.FC<IProp> = ({ onFinish, onFinishFailed }) => {
-  useEffect(() => {}, []);
+  const [form] = useForm<ISignupFormValues>();
+  form.setFieldsValue(getDefaultFormValues());
   return (
     <Form
+      form={form}
       data-testid="form"
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}

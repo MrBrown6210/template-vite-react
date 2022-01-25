@@ -8,9 +8,9 @@ export interface SignupDto {
   organization?: string;
   country: string;
   phone: string;
-  is_agree_collect_data?: boolean;
-  need_notify_review_update?: boolean;
-  need_contact_to_review?: boolean;
+  is_agree_collect_data: boolean;
+  need_notify_review_update: boolean;
+  need_contact_to_review: boolean;
 }
 
 export interface LoginDto {
