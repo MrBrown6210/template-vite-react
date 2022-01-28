@@ -1,17 +1,14 @@
 import "@testing-library/jest-dom";
 import { describe, it, expect, beforeEach, vi } from "vitest";
 import { SignupForm } from "./SignupForm";
-import { render, fireEvent, screen } from "@testing-library/react";
-import { Simulate } from "react-dom/test-utils";
+import { render, fireEvent, screen, waitFor } from "@testing-library/react";
 
 const typeInput = (element: HTMLElement, text: string) => {
-  element.nodeValue = text;
-  Simulate.change(element);
-  // fireEvent.change(element, {
-  //   target: {
-  //     value: text,
-  //   },
-  // });
+  fireEvent.change(element, {
+    target: {
+      value: text,
+    },
+  });
 };
 
 describe("SignupForm.tsx", () => {
@@ -52,17 +49,15 @@ describe("SignupForm.tsx", () => {
   });
 
   describe("Trigger", () => {
-    const onFinish = vi.fn((arg) => arg);
+    const onFinish = vi.fn();
     const onFinishFailed = vi.fn();
-    let _debug: any;
-    beforeAll(() => {
-      const { debug } = render(
+    beforeEach(() => {
+      render(
         <SignupForm onFinish={onFinish} onFinishFailed={onFinishFailed} />
       );
-      _debug = debug;
     });
+
     it("Should trigger onFinish when submit with correct data", async () => {
-      // screen.getByTestId("email").
       typeInput(screen.getByTestId("email"), "superadmin@gmail.com");
       typeInput(screen.getByTestId("password"), "123456789");
       typeInput(screen.getByTestId("confirm-password"), "123456789");
@@ -77,10 +72,18 @@ describe("SignupForm.tsx", () => {
       fireEvent.click(screen.getByTestId("is_agree_collect_data"));
       fireEvent.click(screen.getByTestId("need_notify_review_update"));
       fireEvent.click(screen.getByTestId("need_contact_to_review"));
-      fireEvent.submit(screen.getByTestId("form"));
-      expect(screen.findByText("Please input your country!")).toBeTruthy();
-      _debug();
-      expect(onFinish).toHaveBeenCalled();
+      fireEvent.submit(screen.getByTestId("submit-button"));
+
+      await waitFor(() => {
+        expect(onFinish).toBeCalled();
+      });
+    });
+
+    it("Should trigger onFinishFailed when submit with incorrent or empty data", async () => {
+      fireEvent.submit(screen.getByTestId("submit-button"));
+      await waitFor(() => {
+        expect(onFinishFailed).toBeCalled();
+      });
     });
   });
 });
