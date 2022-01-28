@@ -2,14 +2,7 @@ import "@testing-library/jest-dom";
 import { describe, it, expect, beforeEach, vi } from "vitest";
 import { SignupForm } from "./SignupForm";
 import { render, fireEvent, screen, waitFor } from "@testing-library/react";
-
-const typeInput = (element: HTMLElement, text: string) => {
-  fireEvent.change(element, {
-    target: {
-      value: text,
-    },
-  });
-};
+import { typeInput } from "../test-utils/typeInput";
 
 describe("SignupForm.tsx", () => {
   describe("Require Field", () => {
