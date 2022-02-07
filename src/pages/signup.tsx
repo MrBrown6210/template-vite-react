@@ -1,4 +1,3 @@
-import "./login.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "../helper/axios";
 import api from "../api";

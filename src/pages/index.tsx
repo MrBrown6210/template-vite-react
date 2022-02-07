@@ -1,7 +1,10 @@
 import { useState } from "react";
+import { useTasks } from "../hooks/swr";
 
 function IndexPage() {
   const [count, setCount] = useState(0);
+
+  const { tasks, error } = useTasks(10);
 
   return (
     <div className="App">
@@ -35,6 +38,15 @@ function IndexPage() {
           </a>
         </p>
         <div>testing</div>
+        {error && (
+          <div>
+            {error.code?.toString()}: {error.message}
+          </div>
+        )}
+        {tasks &&
+          tasks.map((t) => {
+            return <div key={t.id}>{t.title}</div>;
+          })}
       </header>
     </div>
   );
