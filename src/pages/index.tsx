@@ -34,6 +34,7 @@ function IndexPage() {
             Vite Docs
           </a>
         </p>
+        <div>testing</div>
       </header>
     </div>
   );

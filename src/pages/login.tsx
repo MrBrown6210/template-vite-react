@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./login.css";
 import logo from "../assets/logo.svg";
 import { Form, Input, Button, Checkbox } from "antd";
 import { Link, useNavigate } from "react-router-dom";
