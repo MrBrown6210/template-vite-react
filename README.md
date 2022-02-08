@@ -67,7 +67,7 @@ VITE_MOCK_ENABLE=true
 
 ```
 src\
- |--api\            # utilities for call API
+ |--api\            # Utilities for call API
  |--assets\    	    # Uncompiled assets such as your styles, images, or fonts
  |--components\     # React Components
  |--helper\         # Utilities
