@@ -67,16 +67,16 @@ VITE_MOCK_ENABLE=true
 
 ```
 src\
- |--api\         # utilities for call API
- |--assets\    	# Uncompiled assets such as your styles, images, or fonts
+ |--api\            # utilities for call API
+ |--assets\    	    # Uncompiled assets such as your styles, images, or fonts
  |--components\     # React Components
  |--helper\         # Utilities
  |--hooks\          # Custom React Hooks
  |--layouts\        # App Layout Component (use with react-router-dom)
  |--mocks\          # Mock API and Mock Data
- |--pages\	# Page components for application routes
- |--stores\		# data-store with zustand
- |--test-utils\	# Utilities for testing
+ |--pages\	        # Page components for application routes
+ |--stores\		    # data-store with zustand
+ |--test-utils\	    # Utilities for testing
  |--App.tsx         # Routes management
  |--main.tsx        # App entry point
  |--env.d.ts        # ENV definition type
