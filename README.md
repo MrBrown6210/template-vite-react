@@ -74,8 +74,8 @@ src\
  |--hooks\          # Custom React Hooks
  |--layouts\        # App Layout Component (use with react-router-dom)
  |--mocks\          # Mock API and Mock Data
- |--pages\	        # Page components for application routes
- |--stores\		    # data-store with zustand
+ |--pages\	     # Page components for application routes
+ |--stores\		 # data-store with zustand
  |--test-utils\	    # Utilities for testing
  |--App.tsx         # Routes management
  |--main.tsx        # App entry point
