@@ -7,8 +7,6 @@ declare namespace Cypress {
      * @param id
      * @example cy.getByTestId("email")
      */
-    getByTestId(
-      id: string
-    ): Chainable<(cy & EventEmitter) | JQuery<HTMLElement>>;
+    getByTestId(id: string): Chainable<(cy & EventEmitter) | JQuery<HTMLElement>>
   }
 }

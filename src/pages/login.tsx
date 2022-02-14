@@ -1,13 +1,13 @@
-import { useState } from "react";
-import logo from "../assets/logo.svg";
-import { Form, Input, Button, Checkbox } from "antd";
-import { Link, useNavigate } from "react-router-dom";
-import axios from "../helper/axios";
-import { login } from "../api/auth";
-import { AxiosError } from "axios";
+import { useState } from 'react'
+import logo from '../assets/logo.svg'
+import { Form, Input, Button, Checkbox } from 'antd'
+import { Link, useNavigate } from 'react-router-dom'
+import axios from '../helper/axios'
+import { login } from '../api/auth'
+import { AxiosError } from 'axios'
 
 function LoginPage() {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   return (
     <div className="bg-background content flex justify-center items-center">
@@ -15,59 +15,55 @@ function LoginPage() {
         <img src={logo} alt="logo" className="w-24" />
         <h1 className=" text-2xl font-bold text-white mt-3">
           วารสารการส่งเสริมสุขภาพไทย
+          {[1, 11, 111].map((x) => {
+            return <div></div>
+          })}
         </h1>
         <h2 className=" text-xl text-white">Thai Health Promotion Journal</h2>
         <Form
           data-testid="form"
           onFinish={async (e) => {
             try {
-              const token = await login(e);
-              console.log(token);
-              alert("Logged In");
-              navigate("/", { replace: true });
+              const token = await login(e)
+              console.log(token)
+              alert('Logged In')
+              navigate('/', { replace: true })
             } catch (error) {
               if (axios.isAxiosError(error)) {
-                alert(error.message);
+                alert(error.message)
               }
             }
           }}
           onFinishFailed={() => {
-            console.log("sss");
+            console.log('sss')
           }}
         >
-          <Form.Item
-            name="email"
-            rules={[{ required: true, message: "Please input your email!" }]}
-          >
+          <Form.Item name="email" rules={[{ required: true, message: 'Please input your email!' }]}>
             <Input placeholder="Email" className=" w-80" data-testid="email" />
           </Form.Item>
 
           <Form.Item
             name="password"
-            rules={[{ required: true, message: "Please input your password!" }]}
+            rules={[{ required: true, message: 'Please input your password!' }]}
           >
             <Input.Password placeholder="Password" data-testid="password" />
           </Form.Item>
 
           <Form.Item wrapperCol={{ offset: 5, span: 16 }}>
-            <Button
-              type="primary"
-              htmlType="submit"
-              className="w-48 bg-orange border-0"
-            >
+            <Button type="primary" htmlType="submit" className="w-48 bg-orange border-0">
               Login
             </Button>
           </Form.Item>
         </Form>
         <p className=" text-white">
-          In case you do not have an account, please{" "}
-          <Link data-testid="signup" to={"/signup"}>
+          In case you do not have an account, please{' '}
+          <Link data-testid="signup" to={'/signup'}>
             Create an Account
           </Link>
         </p>
       </div>
     </div>
-  );
+  )
 }
 
-export default LoginPage;
+export default LoginPage

@@ -1,46 +1,41 @@
-import { Button, Checkbox, Col, Form, Input, Row } from "antd";
-import { useForm } from "antd/lib/form/Form";
+import { Button, Checkbox, Col, Form, Input, Row } from 'antd'
+import { useForm } from 'antd/lib/form/Form'
 
 export interface ISignupFormValues {
-  email: string;
-  password: string;
-  comfirmPassword: string;
-  firstName: string;
-  lastName: string;
-  organization?: string;
-  country: string;
-  phone: string;
-  is_agree_collect_data: boolean;
-  need_notify_review_update: boolean;
-  need_contact_to_review: boolean;
+  email: string
+  password: string
+  comfirmPassword: string
+  firstName: string
+  lastName: string
+  organization?: string
+  country: string
+  phone: string
+  is_agree_collect_data: boolean
+  need_notify_review_update: boolean
+  need_contact_to_review: boolean
 }
 
 interface IProp {
-  onFinish?: (values: ISignupFormValues) => void;
-  onFinishFailed?: (error: any) => void;
+  onFinish?: (values: ISignupFormValues) => void
+  onFinishFailed?: (error: any) => void
 }
 
 const getDefaultFormValues = () => ({
   is_agree_collect_data: false,
   need_notify_review_update: false,
-  need_contact_to_review: false,
-});
+  need_contact_to_review: false
+})
 
 export const SignupForm: React.FC<IProp> = ({ onFinish, onFinishFailed }) => {
-  const [form] = useForm<ISignupFormValues>();
-  form.setFieldsValue(getDefaultFormValues());
+  const [form] = useForm<ISignupFormValues>()
+  form.setFieldsValue(getDefaultFormValues())
   return (
-    <Form
-      form={form}
-      data-testid="form"
-      onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
-    >
+    <Form form={form} data-testid="form" onFinish={onFinish} onFinishFailed={onFinishFailed}>
       <Form.Item
         labelCol={{ span: 24 }}
         label="Email"
         name="email"
-        rules={[{ required: true, message: "Please input your email!" }]}
+        rules={[{ required: true, message: 'Please input your email!' }]}
       >
         <Input placeholder="Email" data-testid="email" className=" w-full" />
       </Form.Item>
@@ -49,13 +44,9 @@ export const SignupForm: React.FC<IProp> = ({ onFinish, onFinishFailed }) => {
         <Col span={12}>
           <Form.Item
             name="password"
-            rules={[{ required: true, message: "Please input your password!" }]}
+            rules={[{ required: true, message: 'Please input your password!' }]}
           >
-            <Input.Password
-              placeholder="Password"
-              data-testid="password"
-              className=" w-full"
-            />
+            <Input.Password placeholder="Password" data-testid="password" className=" w-full" />
           </Form.Item>
         </Col>
         <Col span={12}>
@@ -64,26 +55,21 @@ export const SignupForm: React.FC<IProp> = ({ onFinish, onFinishFailed }) => {
             rules={[
               {
                 required: true,
-                message: "Please confirm your password!",
+                message: 'Please confirm your password!'
               },
               ({ getFieldValue }) => ({
                 validator(_, value) {
-                  if (!value || getFieldValue("password") === value) {
-                    return Promise.resolve();
+                  if (!value || getFieldValue('password') === value) {
+                    return Promise.resolve()
                   }
                   return Promise.reject(
-                    new Error(
-                      "The two passwords that you entered do not match!"
-                    )
-                  );
-                },
-              }),
+                    new Error('The two passwords that you entered do not match!')
+                  )
+                }
+              })
             ]}
           >
-            <Input.Password
-              data-testid="confirm-password"
-              placeholder="Confirm Password"
-            />
+            <Input.Password data-testid="confirm-password" placeholder="Confirm Password" />
           </Form.Item>
         </Col>
       </Row>
@@ -99,7 +85,7 @@ export const SignupForm: React.FC<IProp> = ({ onFinish, onFinishFailed }) => {
             label="Name"
             labelCol={{ span: 24 }}
             name="firstName"
-            rules={[{ required: true, message: "Please input your name!" }]}
+            rules={[{ required: true, message: 'Please input your name!' }]}
           >
             <Input placeholder="Name" data-testid="name" className=" w-full" />
           </Form.Item>
@@ -112,8 +98,8 @@ export const SignupForm: React.FC<IProp> = ({ onFinish, onFinishFailed }) => {
             rules={[
               {
                 required: true,
-                message: "Please input your last name!",
-              },
+                message: 'Please input your last name!'
+              }
             ]}
           >
             <Input data-testid="last-name" placeholder="Last name" />
@@ -128,8 +114,8 @@ export const SignupForm: React.FC<IProp> = ({ onFinish, onFinishFailed }) => {
         rules={[
           {
             required: false,
-            message: "Please input your Organization!",
-          },
+            message: 'Please input your Organization!'
+          }
         ]}
       >
         <Input data-testid="organization" placeholder="Organization" />
@@ -141,13 +127,9 @@ export const SignupForm: React.FC<IProp> = ({ onFinish, onFinishFailed }) => {
             label="Country"
             labelCol={{ span: 24 }}
             name="country"
-            rules={[{ required: true, message: "Please input your country!" }]}
+            rules={[{ required: true, message: 'Please input your country!' }]}
           >
-            <Input
-              data-testid="country"
-              placeholder="Country"
-              className=" w-full"
-            />
+            <Input data-testid="country" placeholder="Country" className=" w-full" />
           </Form.Item>
         </Col>
         <Col span={12}>
@@ -158,8 +140,8 @@ export const SignupForm: React.FC<IProp> = ({ onFinish, onFinishFailed }) => {
             rules={[
               {
                 required: true,
-                message: "Please input your phone!",
-              },
+                message: 'Please input your phone!'
+              }
             ]}
           >
             <Input data-testid="phone" placeholder="Phone" />
@@ -169,8 +151,7 @@ export const SignupForm: React.FC<IProp> = ({ onFinish, onFinishFailed }) => {
 
       <Form.Item name="is_agree_collect_data" valuePropName="checked">
         <Checkbox data-testid="is_agree_collect_data">
-          I agree to have my data collected and stored accroding to the privacy
-          statement
+          I agree to have my data collected and stored accroding to the privacy statement
         </Checkbox>
       </Form.Item>
 
@@ -182,8 +163,7 @@ export const SignupForm: React.FC<IProp> = ({ onFinish, onFinishFailed }) => {
 
       <Form.Item name="need_contact_to_review" valuePropName="checked">
         <Checkbox data-testid="need_contact_to_review">
-          I would like to be contacted with requests to review submissions to
-          this journal.
+          I would like to be contacted with requests to review submissions to this journal.
         </Checkbox>
       </Form.Item>
 
@@ -198,5 +178,5 @@ export const SignupForm: React.FC<IProp> = ({ onFinish, onFinishFailed }) => {
         </Button>
       </Form.Item>
     </Form>
-  );
-};
+  )
+}

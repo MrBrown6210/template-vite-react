@@ -1,9 +1,9 @@
-import * as auth from "./auth";
+import * as auth from './auth'
 
 export const api = {
-  auth,
-};
+  auth
+}
 
 export default {
-  ...api,
-};
+  ...api
+}

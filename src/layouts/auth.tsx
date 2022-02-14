@@ -1,5 +1,5 @@
-import { Outlet } from "react-router-dom";
-import logo from "../assets/logo.svg";
+import { Outlet } from 'react-router-dom'
+import logo from '../assets/logo.svg'
 export const AuthLayout = () => {
   return (
     <div>
@@ -7,12 +7,8 @@ export const AuthLayout = () => {
         <div className="flex gap-x-4">
           <img src={logo} alt="" />
           <div className="">
-            <h1 className="text-white font-bold text-sm">
-              วารสารการส่งเสริมสุขภาพไทย
-            </h1>
-            <h2 className="text-white text-xs">
-              Thai Health Promotion Journal
-            </h2>
+            <h1 className="text-white font-bold text-sm">วารสารการส่งเสริมสุขภาพไทย</h1>
+            <h2 className="text-white text-xs">Thai Health Promotion Journal</h2>
           </div>
         </div>
         <div></div>
@@ -21,5 +17,5 @@ export const AuthLayout = () => {
         <Outlet></Outlet>
       </div>
     </div>
-  );
-};
+  )
+}

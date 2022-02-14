@@ -1,10 +1,10 @@
-import { useState } from "react";
-import { useTasks } from "../hooks/swr";
+import { useState } from 'react'
+import { useTasks } from '../hooks/swr'
 
 function IndexPage() {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(0)
 
-  const { tasks, error } = useTasks(10);
+  const { tasks, error } = useTasks(10)
 
   return (
     <div className="App">
@@ -27,7 +27,7 @@ function IndexPage() {
           >
             Learn React
           </a>
-          {" | "}
+          {' | '}
           <a
             className="App-link"
             href="https://vitejs.dev/guide/features.html"
@@ -45,11 +45,11 @@ function IndexPage() {
         )}
         {tasks &&
           tasks.map((t) => {
-            return <div key={t.id}>{t.title}</div>;
+            return <div key={t.id}>{t.title}</div>
           })}
       </header>
     </div>
-  );
+  )
 }
 
-export default IndexPage;
+export default IndexPage

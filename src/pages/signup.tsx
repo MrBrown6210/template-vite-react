@@ -1,26 +1,26 @@
-import { Link, useNavigate } from "react-router-dom";
-import axios from "../helper/axios";
-import api from "../api";
-import { ISignupFormValues, SignupForm } from "../components/SignupForm";
+import { Link, useNavigate } from 'react-router-dom'
+import axios from '../helper/axios'
+import api from '../api'
+import { ISignupFormValues, SignupForm } from '../components/SignupForm'
 
 const SignupPage = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const onFinish = async (e: ISignupFormValues) => {
     try {
-      await api.auth.signup(e);
-      navigate("/", { replace: true });
+      await api.auth.signup(e)
+      navigate('/', { replace: true })
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        alert(error.message);
+        alert(error.message)
       }
     }
-  };
+  }
 
   return (
     <div className="content px-16 pt-5">
       <div className=" flex">
-        <Link to={"/login"}>Register / Login</Link>
+        <Link to={'/login'}>Register / Login</Link>
         <div>/</div>
         <p>Create a New Account</p>
       </div>
@@ -36,7 +36,7 @@ const SignupPage = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default SignupPage;
+export default SignupPage
