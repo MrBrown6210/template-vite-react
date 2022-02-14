@@ -1,5 +1,6 @@
 import { Button, Checkbox, Col, Form, Input, Row } from 'antd'
 import { useForm } from 'antd/lib/form/Form'
+import { FC } from 'react'
 
 export interface ISignupFormValues {
   email: string
@@ -26,7 +27,7 @@ const getDefaultFormValues = () => ({
   need_contact_to_review: false
 })
 
-export const SignupForm: React.FC<IProp> = ({ onFinish, onFinishFailed }) => {
+export const SignupForm: FC<IProp> = ({ onFinish, onFinishFailed }) => {
   const [form] = useForm<ISignupFormValues>()
   form.setFieldsValue(getDefaultFormValues())
   return (
