@@ -3,7 +3,6 @@ import IndexPage from './pages'
 import LoginPage from './pages/login'
 import { RequireAuth } from './components/RequireAuth'
 import './App.css'
-import SignupPage from './pages/signup'
 import { DefaultLayout } from './layouts/default'
 import { AuthLayout } from './layouts/auth'
 
@@ -19,7 +18,6 @@ function App() {
           </Route>
           <Route element={<AuthLayout />}>
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/signup" element={<SignupPage />} />
           </Route>
         </Routes>
       </BrowserRouter>

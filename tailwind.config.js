@@ -5,6 +5,9 @@ module.exports = {
       colors: {
         primary: '#F15A29',
         sidebar: '#363B40'
+      },
+      borderWidth: {
+        '1': '1px'
       }
     }
   },

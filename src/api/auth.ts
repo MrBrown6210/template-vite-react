@@ -14,21 +14,11 @@ export interface SignupDto {
 }
 
 export interface LoginDto {
-  email: string
-  password: string
+  phone: string
 }
 
 export interface TokenDto {
   accessToken: string
-}
-
-export const signup = async (signupDto: SignupDto) => {
-  const { email, password } = signupDto
-  await axios.post('auth/signup', signupDto)
-  await login({
-    email,
-    password
-  })
 }
 
 export const login = async (loginDto: LoginDto) => {

@@ -6,7 +6,7 @@ import 'antd/dist/antd.css'
 import { worker } from './mocks/browser'
 
 const MOCK_ENABLE = import.meta.env.VITE_MOCK_ENABLE
-if (import.meta.env.NODE_ENV === 'development' && MOCK_ENABLE) {
+if (import.meta.env.DEV && MOCK_ENABLE) {
   worker.start()
 }
 

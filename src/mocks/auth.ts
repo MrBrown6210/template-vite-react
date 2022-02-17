@@ -4,12 +4,13 @@ import { LoginDto, TokenDto, SignupDto } from '../api/auth'
 const API_URL = import.meta.env.VITE_API_URL
 
 export const login = rest.post<LoginDto>(`${API_URL}/auth/login`, (req, res, ctx) => {
-  const { email, password } = req.body
-  if (email !== 'superadmin@gmail.com')
+  const { phone } = req.body
+  console.log(phone)
+  if (phone !== '0123456789')
     return res(
       ctx.status(400),
       ctx.json({
-        message: 'Wrong credential'
+        message: 'ไม่มีผู้ใช้นี้ในระบบ'
       })
     )
   const result = ctx.json<TokenDto>({

@@ -8,16 +8,12 @@ export interface ITask {
 }
 
 export const getTasks = async (limit: number) => {
-  try {
-    const tasks = (
-      await axios.get<ITask[]>('tasks', {
-        params: {
-          limit: limit
-        }
-      })
-    ).data
-    return tasks
-  } catch (error) {
-    throw error
-  }
+  const tasks = (
+    await axios.get<ITask[]>('tasks', {
+      params: {
+        limit: limit
+      }
+    })
+  ).data
+  return tasks
 }
