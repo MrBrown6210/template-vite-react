@@ -1,6 +1,10 @@
 {
-  "name": "thpj",
-  "version": "0.0.0",
+  "name": "vite-react-template",
+  "version": "0.1.0",
+  "license": "MIT",
+  "engines": {
+    "node": "16.x"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
