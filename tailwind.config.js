@@ -3,9 +3,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        nav: '#039E78',
-        background: '#3A6C59',
-        orange: '#ED7E24'
+        primary: '#F15A29',
+        sidebar: '#363B40'
       }
     }
   },

@@ -9,59 +9,26 @@ function LoginPage() {
   const navigate = useNavigate()
 
   return (
-    <div className="bg-background content flex justify-center items-center">
-      <div className="flex flex-col items-center">
-        <img src={logo} alt="logo" className="w-24" />
-        <h1 className=" text-2xl font-bold text-white mt-3">วารสารการส่งเสริมสุขภาพไทย</h1>
-        <h2 className=" text-xl text-white">Thai Health Promotion Journal</h2>
-        <Form
-          data-testid="form"
-          onFinish={async (e) => {
-            try {
-              const token = await login(e)
-              navigate('/', { replace: true })
-            } catch (error) {
-              if (axios.isAxiosError(error)) {
-                alert(error.message)
-              }
-            }
-          }}
-          onFinishFailed={() => {
-            console.log('sss')
-          }}
-        >
-          <Form.Item name="email" rules={[{ required: true, message: 'Please input your email!' }]}>
-            <Input
-              placeholder="Email"
-              className=" w-80"
-              data-testid="email"
-              autoComplete="username"
-            />
-          </Form.Item>
-
-          <Form.Item
-            name="password"
-            rules={[{ required: true, message: 'Please input your password!' }]}
-          >
-            <Input.Password
-              placeholder="Password"
-              data-testid="password"
-              autoComplete="current-password"
-            />
-          </Form.Item>
-
-          <Form.Item wrapperCol={{ offset: 5, span: 16 }}>
-            <Button type="primary" htmlType="submit" className="w-48 bg-orange border-0">
-              Login
-            </Button>
-          </Form.Item>
-        </Form>
-        <p className=" text-white">
-          In case you do not have an account, please{' '}
-          <Link data-testid="signup" to={'/signup'}>
-            Create an Account
-          </Link>
-        </p>
+    <div className="relative grid h-[calc(100vh_-_44px)] grid-cols-[4fr__1fr]">
+      <div>
+        <img src="https://i.morioh.com/210422/3bf0c8a4.webp" alt="cover app" className="h-full" />
+      </div>
+      <div className="flex justify-center p-2">
+        <div>
+          <h1 className="text-center text-2xl font-semibold">เข้าสู่ระบบ</h1>
+          <div className="mt-5">
+            <Form>
+              <Form.Item
+                labelCol={{ span: 24 }}
+                label="เบอร์โทรศัพท์"
+                name="phone"
+                rules={[{ required: true, message: 'กรุณากรอกเบอร์โทรศัพท์' }]}
+              >
+                <Input placeholder="0123456789" data-testid="phone" className="" />
+              </Form.Item>
+            </Form>
+          </div>
+        </div>
       </div>
     </div>
   )

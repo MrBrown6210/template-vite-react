@@ -173,7 +173,7 @@ export const SignupForm: FC<IProp> = ({ onFinish, onFinishFailed }) => {
           data-testid="submit-button"
           type="primary"
           htmlType="submit"
-          className="w-48 bg-orange border-0"
+          className="bg-orange w-48 border-0"
         >
           Register
         </Button>

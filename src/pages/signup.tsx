@@ -31,7 +31,7 @@ const SignupPage = () => {
       </div>
       <div className="h-[2px] bg-gray-50"></div>
       <div className="flex justify-center">
-        <div className="pt-5 w-3/6">
+        <div className="w-3/6 pt-5">
           <SignupForm onFinish={onFinish}></SignupForm>
         </div>
       </div>
