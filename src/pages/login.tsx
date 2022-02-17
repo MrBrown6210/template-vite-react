@@ -4,7 +4,6 @@ import { Form, Input, Button, Checkbox } from 'antd'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from '../helper/axios'
 import { login } from '../api/auth'
-import { AxiosError } from 'axios'
 
 function LoginPage() {
   const navigate = useNavigate()
@@ -13,20 +12,13 @@ function LoginPage() {
     <div className="bg-background content flex justify-center items-center">
       <div className="flex flex-col items-center">
         <img src={logo} alt="logo" className="w-24" />
-        <h1 className=" text-2xl font-bold text-white mt-3">
-          วารสารการส่งเสริมสุขภาพไทย
-          {[1, 11, 111].map((x) => {
-            return <div></div>
-          })}
-        </h1>
+        <h1 className=" text-2xl font-bold text-white mt-3">วารสารการส่งเสริมสุขภาพไทย</h1>
         <h2 className=" text-xl text-white">Thai Health Promotion Journal</h2>
         <Form
           data-testid="form"
           onFinish={async (e) => {
             try {
               const token = await login(e)
-              console.log(token)
-              alert('Logged In')
               navigate('/', { replace: true })
             } catch (error) {
               if (axios.isAxiosError(error)) {
@@ -39,14 +31,23 @@ function LoginPage() {
           }}
         >
           <Form.Item name="email" rules={[{ required: true, message: 'Please input your email!' }]}>
-            <Input placeholder="Email" className=" w-80" data-testid="email" />
+            <Input
+              placeholder="Email"
+              className=" w-80"
+              data-testid="email"
+              autoComplete="username"
+            />
           </Form.Item>
 
           <Form.Item
             name="password"
             rules={[{ required: true, message: 'Please input your password!' }]}
           >
-            <Input.Password placeholder="Password" data-testid="password" />
+            <Input.Password
+              placeholder="Password"
+              data-testid="password"
+              autoComplete="current-password"
+            />
           </Form.Item>
 
           <Form.Item wrapperCol={{ offset: 5, span: 16 }}>
